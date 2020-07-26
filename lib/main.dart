@@ -25,7 +25,7 @@ class SampleAppPage extends StatefulWidget {
 
 class _SampleAppPageState extends State<SampleAppPage> {
   bool needToChange = false;
-  String textToShow = "I Like Flutter";
+  String textToShow = "Hey there";
   String appBarTitleToShow = "Welcome";
 
    var list = [Colors.green,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(SolidTestApp());
 
 class SolidTestApp extends StatelessWidget {
-  // This widget is the root of your application.
+  // This widget is the root of application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,24 +24,74 @@ class SampleAppPage extends StatefulWidget {
 }
 
 class _SampleAppPageState extends State<SampleAppPage> {
-  // Default placeholder text
   bool needToChange = false;
   String textToShow = "I Like Flutter";
   String appBarTitleToShow = "Welcome";
-  Color backGroundColor = Colors.grey;
+
+   var list = [Colors.green,
+     Colors.lightBlue,
+     Colors.blue,
+     Colors.grey,
+     Colors.white,
+     Colors.purple,
+     Colors.pink,
+     Colors.amber,
+     Colors.amberAccent,
+     Colors.red,
+     Colors.cyan,
+     Colors.greenAccent,
+   ];
+
+  int random = 0;
+  int randomMax = 12;
+
+  Color containerBackGroundColor = Colors.white;
+
   void _updateText() {
+    setState(() {
+      // One text ot another - we choosing by boolean
+      if (needToChange) {
+        // Changing text in center
+        textToShow = "Flutter looks good";
+        // Changing text in navigation Bar
+        appBarTitleToShow = "Welcome";
+
+        // Getting semi-random int for next color
+        if (random + 1 == randomMax) {
+          random = 0;
+        } else {
+          random += 1;
+        }
+        // Getting selected color
+        containerBackGroundColor = list[random];
+        // Changing boolean on opposite
+        needToChange = false;
+      } else {
+        // Changing text in center
+        textToShow = "Flutter looks so good";
+        // Changing text in navigation Bar
+        appBarTitleToShow = "This is my First App";
+
+        // Getting semi-random int for next color
+        if (random + 1 == randomMax) {
+          random = 0;
+        } else {
+          random += 1;
+        }
+        // Getting selected color
+        containerBackGroundColor = list[random];
+        // Changing boolean on opposite
+        needToChange = true;
+
+      }
+    });
+  }
+
+  void _updateColor() {
     setState(() {
       // update the text
       if (needToChange) {
-         textToShow = "Flutter looks good";
-         appBarTitleToShow = "Welcome";
-         backGroundColor = Colors.grey;
-         needToChange = false;
       } else {
-        textToShow = "Flutter looks so good";
-        appBarTitleToShow = "This is my First App";
-        backGroundColor = Colors.lightBlue;
-        needToChange = true;
       }
     });
   }
@@ -52,6 +102,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
         title: Text(appBarTitleToShow),
       ),
       body: Center(
+        // Update text and backgroundColor on tap
         child: GestureDetector(
           onTap: () {
             _updateText();
@@ -59,7 +110,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
             child: Container(
               height: MediaQuery.of(context).size.height,
               width:  MediaQuery.of(context).size.width,
-              color: backGroundColor,
+              color: containerBackGroundColor,
               child: Center(child: Text(textToShow))
          )
         ),

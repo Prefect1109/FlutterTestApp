@@ -52,7 +52,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
       // One text ot another - we choosing by boolean
       if (needToChange) {
         // Changing text in center
-        textToShow = "Flutter looks good";
+        textToShow = "Hey there";
         // Changing text in navigation Bar
         appBarTitleToShow = "Welcome";
 
@@ -68,7 +68,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
         needToChange = false;
       } else {
         // Changing text in center
-        textToShow = "Flutter looks so good";
+        textToShow = "Flutter looks good";
         // Changing text in navigation Bar
         appBarTitleToShow = "This is my First App";
 
